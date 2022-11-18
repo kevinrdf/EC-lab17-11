@@ -16,7 +16,10 @@ export default {
     },
     toMinutesAndSeconds(millis) {
       /* TODO: implementar esta funcion */
-      return "";
+      const tracks = spotifyAPI.getPlaylist(millis);
+      this.minutes=tracks.tracks.items;
+      this.seconds=tracks.tracks.items;
+      return minutes, seconds;
     },
   },
   data() {

@@ -30,6 +30,13 @@ export default {
     <div class="albums-container">
       {{/*TODO: Mandar los datos del album. Mira el componente para ver que se manda. Recuerda iterar porque son varios albums*/ }}
       <ArtistAlbumComponent
+      v-for="(albums,index) in main"
+      :key="index"
+      :type="albums.type"
+      :id="albums.id"
+      :name="albums.name"
+      :img="albums.img"
+      :artist="albums.artist"
       ></ArtistAlbumComponent>
     </div>
   </div>

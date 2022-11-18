@@ -22,6 +22,10 @@ router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
   if (to.name === "logout" && userStore.isAuthenticated()) {
     //TODO: Implementar.
+    const code = to.isAuthenticated;
+    const accessToken=spotifyAPI.getAccessToken(isAuthenticated);
+    userStore.login("krdf19", accessToken);
+    return next({ name: "about"});
   }
   if (to.name === "loginCallback" && Object.keys(to.query).length) {
     const code = to.query.code;
@@ -29,7 +33,6 @@ router.beforeEach((to, from, next) => {
     userStore.login("jpazos", accessToken);
     return next({ name: "about" });
   }
-
   !userStore.isAuthenticated() && to.name !== "login"
     ? next({ name: "login" })
     : next();
